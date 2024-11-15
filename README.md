@@ -10,8 +10,7 @@ This project is a full-stack application that generates detailed trading reports
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Future Enhancements](#future-enhancements)
-- [License](#license)
+
 
 ## Overview
 
