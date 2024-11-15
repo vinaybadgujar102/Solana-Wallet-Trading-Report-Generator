@@ -12,11 +12,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@repo/database": "*",
+    "@repo/types": "*",
     "@types/express": "^5.0.0",
-    "express": "^4.21.1",
-    "@repo/database": "*"
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2"
   }
