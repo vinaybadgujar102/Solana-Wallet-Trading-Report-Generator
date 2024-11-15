@@ -1,81 +1,99 @@
-# Turborepo starter
+# Solana Wallet Trading Report Generator (WIP)
 
-This is an official starter Turborepo.
+This project is a full-stack application that generates detailed trading reports for a specified Solana wallet using Solscan data. Built on the MERN stack (MongoDB, Express, React, Node.js), Next.js, and TypeScript, it provides financial insights into Solana transactions.
 
-## Using this example
+## Table of Contents
 
-Run the following command:
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Future Enhancements](#future-enhancements)
+- [License](#license)
 
-```sh
-npx create-turbo@latest
-```
+## Overview
 
-## What's inside?
+The application connects to the Solscan API to retrieve transaction history for a Solana wallet, filters for major tokens, and generates a comprehensive report. This report includes transaction dates, amounts, and other key details, ideal for financial record-keeping.
 
-This Turborepo includes the following packages/apps:
+## Features
 
-### Apps and Packages
+- **Transaction Data Retrieval**: Retrieves and stores wallet transaction history from Solscan.
+- **Data Filtering**: Filters data to highlight major tokens for clearer insights.
+- **Report Generation**: Compiles data into a downloadable report format (PDF/Excel).
+- **Optional UI**: A frontend interface allows users to input wallet addresses, configure report preferences, and download reports.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Technology Stack
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **Frontend**: Next.js, React, TypeScript
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: MongoDB
+- **API**: Solscan (or other Solana blockchain explorers)
+- **Monorepo Tooling**: TurboRepo for efficient build and caching
 
-### Utilities
+## Project Structure
 
-This Turborepo has some additional tools already setup for you:
+├── backend # Express backend
+│ ├── controllers # Handles data processing and report generation
+│ ├── models # MongoDB schemas and models
+│ ├── routes # API routes for fetching and generating reports
+│ └── utils # Helper functions for API calls and formatting
+├── frontend # Next.js frontend
+│ ├── pages # Next.js pages (e.g., home, report)
+│ ├── components # Reusable UI components
+│ ├── lib # Shared functions, e.g., API fetching
+│ └── types # TypeScript interfaces for consistent typing
+└── README.md
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Getting Started
 
-### Build
+### Prerequisites
 
-To build all apps and packages, run the following command:
+- [Node.js](https://nodejs.org/) and npm
+- [MongoDB](https://www.mongodb.com/)
+- [Solscan API Key](https://public-api.solscan.io/) (or an alternative Solana blockchain explorer API)
 
-```
-cd my-turborepo
-pnpm build
-```
+### Installation with TurboRepo
 
-### Develop
+1. **Clone the repository**:
 
-To develop all apps and packages, run the following command:
+   ```bash
+   git clone https://github.com/yourusername/solana-wallet-report-generator.git
+   cd solana-wallet-report-generator
+   ```
 
-```
-cd my-turborepo
-pnpm dev
-```
+2. **Install TurboRepo globally** (if not already installed):
 
-### Remote Caching
+   ```bash
+   npm install -g turbo
+   ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+3. **Install dependencies**:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+   - TurboRepo will manage dependencies for both frontend and backend.
 
-```
-cd my-turborepo
-npx turbo login
-```
+   ```bash
+   turbo run install
+   ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+4. **Configure environment variables**:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+   - Create `.env` files in both the `apps/backend` and `apps/frontend` directories.
+   - Add necessary environment variables (e.g., MongoDB URI, Solscan API Key).
 
-```
-npx turbo link
-```
+5. **Start development servers**:
 
-## Useful Links
+   ```bash
+   turbo run dev --parallel
+   ```
 
-Learn more about the power of Turborepo:
+6. **Access the application**:
+   - Open `http://localhost:3000` in your browser.
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Usage
+
+1. **Input Wallet Address**: Enter a Solana wallet address on the main page.
+2. **Configure Report Settings**: Choose token filters, date range, etc.
+3. **Generate Report**: Click "Generate Report" to view data in the report view.
+4. **Download Report**: Download the report in PDF or Excel format.
